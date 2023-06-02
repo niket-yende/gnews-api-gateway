@@ -2,7 +2,13 @@
     "openapi" : "3.0.0",
     "info": {
         "title": "Gnews api gateway",
-        "version": "1.0"
+        "version": "1.0",
+        "description": "Gnews API interaction",
+        "contact": {
+            "name": "Niket Yende",
+            "email": "niket6@gmail.com",
+            "url": "https://www.linkedin.com/in/niket-yende/"
+        }
     },
     "servers": [
         {
@@ -17,8 +23,55 @@
             "in": "header",
             "name": "api-key"
           }
+        },
+        "schemas": {
+            "GnewsSearchResponse" : {
+                "type": "object",
+                "properties": {
+                    "totalArticles" : {
+                        "type": "number"
+                    },
+                    "articles" : {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "content": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "string"
+                                },
+                                "publishedAt": {
+                                    "type": "string"
+                                },
+                                "source": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-      },
+    },
     "paths": {
         "/api/1.0/gnews/search" : {
             "get" : {
@@ -67,6 +120,30 @@
                         "description": "All credentials from batch retrieved",
                         "content": {
                             "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/GnewsSearchResponse"
+                                },
+                                "examples" : {
+                                    "example-1" : {
+                                        "value": {
+                                            "totalArticles":47316,
+                                            "articles":[
+                                               {
+                                                  "title":"Aston Villa ‘to rival’ Newcastle United for transfer after Arsenal ‘talks’",
+                                                  "description":"The latest Aston Villa transfer news as the full-back has previously worked under Unai Emery during the manager's time at the Emirates Stadium.",
+                                                  "content":"Something went wrong, please try again later.\nInvalid email Something went wrong, please try again later.\nAston Villa are set ‘to rival’ Newcastle United for the transfer of Arsenal full-back Kieran Tierney, according to reports.\nThe Scotland interna... [1835 chars]",
+                                                  "url":"https://www.birminghammail.co.uk/sport/football/transfer-news/aston-villa-to-rival-newcastle-27040519",
+                                                  "image":"https://i2-prod.birminghammail.co.uk/incoming/article26095333.ece/ALTERNATES/s1200/0_GettyImages-1246117331.jpg",
+                                                  "publishedAt":"2023-06-02T07:22:01Z",
+                                                  "source":{
+                                                     "name":"Birmingham Live",
+                                                     "url":"https://www.birminghammail.co.uk"
+                                                  }
+                                               }
+                                            ]
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
