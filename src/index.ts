@@ -39,11 +39,9 @@ async function onListening(): Promise<void> {
 
 process.on('uncaughtException', (error:Error) => {
   ErrorHandler.handleError(error);
-  // Logger.error(error);
 });
 
 process.on('unhandledRejection', (reason: string) => {
   ErrorHandler.handleError(new Error(reason));
-  // Logger.error(reason);
 });
 

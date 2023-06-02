@@ -69,7 +69,6 @@ class App {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
       ErrorHandler.handleError(err, res);
-      // Logger.error(err);
     });
   }
 }
