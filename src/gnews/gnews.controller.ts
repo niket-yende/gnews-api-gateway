@@ -4,6 +4,7 @@ import {IRouter, Router, Request, Response, NextFunction} from 'express';
 import GnewsService from './gnews.service';
 import ValidationMiddleware, {RequestProperty} from '../middleware/validation';
 import GetGnewsDto from './dto/get-gnews.dto';
+import {cache} from '../middleware/cache';
 
 export default class GnewsController {
   public path = 'gnews';
@@ -22,6 +23,7 @@ export default class GnewsController {
     this.router.get(
         '/search',
         // ValidationMiddleware.validateDto(RequestProperty.QUERY, GetGnewsDto, true),
+        cache(1000),
         this.fetchGnewsData.bind(this)
     );
   }
