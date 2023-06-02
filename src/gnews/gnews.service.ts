@@ -1,7 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable security/detect-object-injection */
-import httpStatusCodes from 'http-status-codes';
 import Logger from '../lib/logger';
 import {apiCall} from './gnews.helper';
 import GetGnewsDto from './dto/get-gnews.dto';
@@ -11,6 +10,12 @@ export default class GnewsService {
     // default implementation
   }
 
+  /**
+   * Service method to fetch gnews data
+   * @param {GetGnewsDto} getGnewsDto
+   * @param {string} apiKey
+   * @return {any}
+   */
   async fetchGnewsData(getGnewsDto: GetGnewsDto, apiKey: string): Promise<any> {
     Logger.debug(`gnewsService: fetch gnews data by ${JSON.stringify(getGnewsDto)}`);
     const query = {

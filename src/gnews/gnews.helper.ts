@@ -5,7 +5,12 @@ import HttpError from '../error/http-error';
 import httpStatusCodes from 'http-status-codes';
 import Messages from '../helper/messages';
 
-export async function apiCall(query: any) {
+/**
+ * Axios api call method to fetch gnews data
+ * @param {unknown} query
+ * @return {any}
+ */
+export async function apiCall(query: unknown) {
   Logger.debug('gnews.helper: Invoking the apiCall method');
   Logger.debug(`gnews url: ${config.get('microservices.gnewsApi.url')}`);
   const axiosConfig = {
