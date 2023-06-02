@@ -13,18 +13,15 @@ export default class GnewsService {
 
   async fetchGnewsData(getGnewsDto: GetGnewsDto, apiKey: string): Promise<any> {
     Logger.debug(`gnewsService: fetch gnews data by ${JSON.stringify(getGnewsDto)}`);
-    let queryString = `q=${getGnewsDto.q}&apikey=${apiKey}`;
-    if (getGnewsDto.max) {
-      queryString += `&max=${getGnewsDto.max}`;
-    }
-    if (getGnewsDto.lang) {
-      queryString += `&lang=${getGnewsDto.lang}`;
-    }
-    if (getGnewsDto.in) {
-      queryString += `&in=${getGnewsDto.in}`;
-    }
-    Logger.debug(`queryString: ${queryString}`);
-    const result = await apiCall(queryString);
+    const query = {
+      ...(getGnewsDto.q && {q: getGnewsDto.q}),
+      ...(getGnewsDto.max && {max: getGnewsDto.max}),
+      ...(getGnewsDto.lang && {lang: getGnewsDto.lang}),
+      ...(getGnewsDto.in && {in: getGnewsDto.in}),
+      ...(apiKey && {apikey: apiKey}),
+    };
+    Logger.debug(`query: ${JSON.stringify(query)}`);
+    const result = await apiCall(query);
     Logger.debug(`result: ${result}`);
     return result;
   }
