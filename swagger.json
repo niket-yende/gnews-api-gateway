@@ -1,0 +1,77 @@
+{
+    "openapi" : "3.0.0",
+    "info": {
+        "title": "Gnews api gateway",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "Demo API server"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+          "ApiKey": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "api-key"
+          }
+        }
+      },
+    "paths": {
+        "/api/1.0/gnews/search" : {
+            "get" : {
+                "tags": [
+                    "Gnews search"
+                ],
+                "summary": "Get gnews data",
+                "security": [
+                    {
+                      "ApiKey": []
+                    }
+                ],
+                "parameters": [
+                    {
+                      "in": "query",
+                      "required": true,
+                      "name": "q",
+                      "schema": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                        "in": "query",
+                        "name": "max",
+                        "schema": {
+                          "type": "number"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "in",
+                        "schema": {
+                          "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "lang",
+                        "schema": {
+                          "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "All credentials from batch retrieved",
+                        "content": {
+                            "application/json" : {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

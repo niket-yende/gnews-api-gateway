@@ -1,0 +1,28 @@
+{
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:security/recommended",
+    "google",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "no-console": 2, // Remember, this means error!
+    "require-jsdoc": 0,
+    "max-len": [
+      2,
+      {
+        "code": 100
+      }
+    ]
+  }
+}

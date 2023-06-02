@@ -1,0 +1,10 @@
+# Dependency directories
+node_modules/
+
+# environment variables file
+.env
+
+# Nuxt.js build / generate output
+dist
+
+logs
