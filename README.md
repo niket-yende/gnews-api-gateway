@@ -20,4 +20,4 @@ $ npm start
 ```
 
 ## Swagger
-[Api-docs](http://localhost:3000/api-docs)
+[Api-docs](http://localhost:3000/api-docs) - pass the api key as a header property.
